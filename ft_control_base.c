@@ -12,20 +12,24 @@
 
 #include "ft_printf.h"
 
-int			ft_print(char *str, va_list args)
+int			ft_control_base(char *str, va_list args)
 {
 	int		count;
+	int		check_flag;
 	t_flags	flags;
 
-	count = 0;
-	while (str[count] != '\0')
+	count = -1;
+	check_flag = 0;
+	while (str[++count] != '\0')
 	{
 		if (str[count] == '%')
 		{
-			ft_flags_time((str + count), &flags);
+			check_flag = ft_flag_time((str + count), &flags);
+			if (check_flag == -1)
+				count += 0;
+			count += check_flag;
 		}
 		ft_putchar_fd(str[count], 1);
-		count++;
 	}
 	return (count);
 }

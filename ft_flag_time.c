@@ -25,35 +25,27 @@ static t_flags	*lst_zero(t_flags *flags)
 	return (flags);
 }
 
-static int		check_end_flag(char c)
+static t_flags	*fill_lst(char *s, t_flags *flags)
 {
-	char	*check;
-	int		i;
-
-	check = ft_strdup("cspdiuxX\0");
-	i = -1;
-	while (check[++i] != '\0')
-	{
-		if (c == check[i])
-			return (0);
-	}
-	return (1);
+	
+	return (flags);
 }
 
-static t_flags	*find_out_flags(char *str, t_flags *flags)
+int		ft_flag_time(char *str, t_flags *flags)
 {
 	int	i;
 
 	i = 0;
-	while (check_end_flag(str[i]))
-	{
+	str++;
+	if (str[i] == '%')
+		return (1);
+	while (ft_strchr(FLAGS, str[i]) || ft_strchr(NUMBERS, str[i]))
 		i++;
+	if (ft_strchr(TYPES, str[i]))
+	{
+		flags = lst_zero(flags);
+		flags = fill(str, flags);
+		return (-1);
 	}
-	return (flags);
-}
-
-void			ft_flags_time(char *str, t_flags *flags)
-{
-	flags = lst_zero(flags);
-	flags = find_out_flags(str, flags);
+	return (0);
 }

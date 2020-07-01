@@ -68,8 +68,9 @@ fclean:		clean
 
 re:			fclean all
 
-bonus:		$(BONUS_OBJS)
-			$(AR) $(NAME) $(BONUS_OBJS)
+bonus:		$(OBJS) $(BONUS_OBJS)
+			$(AR) $(NAME) $(OBJS) $(BONUS_OBJS)
+			$(RANLIB) $(NAME)
 
 Norme:
 			norminette -R CheckForbiddenSourceHeader $(SRCS) $(BONUS_SRCS) $(LIBS)

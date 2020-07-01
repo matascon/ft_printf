@@ -20,13 +20,15 @@ int		ft_printf(const char *format, ...)
 
 	va_start(args, format);
 	str = ft_strdup(format);
-	count = ft_print(str, args);
+	if (!str)
+		return (0);
+	count = ft_control_base(str, args);
 	va_end(args);
-	return (0);
+	return (count);
 }
 
 int		main()
 {
-	ft_printf("This is %d a %test\n");
+	ft_printf("Hola %05 %% %\n");
     return (0);
 }
