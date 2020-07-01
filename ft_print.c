@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/01 08:29:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/01 13:20:34 by matascon         ###   ########.fr       */
+/*   Created: 2020/07/01 11:37:46 by matascon          #+#    #+#             */
+/*   Updated: 2020/07/01 12:59:39 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <stdarg.h>
-# include "libft/libft.h"
-
-typedef struct	s_flags
+int			ft_print(char *str, va_list args)
 {
-	char	dash;
-	char	zero;
-	char	*left;
-	char	dot;
-	char	*right;
-	char	star;
-	char	type;
-	int		chr_read;
-}				t_flags;
+	int		count;
+	t_flags	flags;
 
-int		ft_print(char *str, va_list args);
-void	ft_flags_time(char *str, t_flags *flags);
-
-#endif
+	count = 0;
+	while (str[count] != '\0')
+	{
+		if (str[count] == '%')
+		{
+			ft_flags_time((str + count), &flags);
+		}
+		ft_putchar_fd(str[count], 1);
+		count++;
+	}
+	return (count);
+}
