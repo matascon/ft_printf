@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/01 13:20:34 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/02 12:15:27 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,13 @@ typedef struct	s_flags
 	int		chr_read;
 }				t_flags;
 
-int		ft_control_base(char *str, va_list args);
-int		ft_flag_time(char *str, t_flags *flags);
+typedef struct	s_str
+{
+	char	*str;
+	int		count;
+}				t_str;
+
+t_str			*ft_control_base(t_str *result, va_list args);
+int				ft_flag_time(char *str, t_flags **flags);
 
 #endif

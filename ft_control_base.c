@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print.c                                         :+:      :+:    :+:   */
+/*   ft_control_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:37:46 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/01 12:59:39 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/02 13:03:48 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_control_base(char *str, va_list args)
+t_str	*ft_control_base(t_str *result, va_list args)
 {
-	int		count;
-	int		check_flag;
-	t_flags	flags;
+	t_flags	*flags;
 
-	count = -1;
-	check_flag = 0;
-	while (str[++count] != '\0')
+	flags = (t_flags *)malloc(sizeof(t_flags));
+	if (!flags)
+		return (NULL);
+	while (result->str[result->count] != '\0')
 	{
-		if (str[count] == '%')
+		if (result->str[result->count] == '%')
 		{
-			check_flag = ft_flag_time((str + count), &flags);
-			if (check_flag == -1)
-				count += 0;
-			count += check_flag;
+			if (ft_flag_time((result->str + result->count + 1), &flags) == -1)
+			{
+				printf("%c %s %c\n", flags->zero, flags->left, flags->type);
+			}
+			result->count += flags->chr_read;
 		}
-		ft_putchar_fd(str[count], 1);
+		ft_putchar_fd(result->str[result->count], 1);
+		(result->count)++;
 	}
-	return (count);
+	return (result);
 }
