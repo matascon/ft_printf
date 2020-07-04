@@ -12,95 +12,99 @@
 
 #include "ft_printf.h"
 
-static t_flags	*stc_zero_flags(t_flags *flags)
+static int	check_flags(char c, t_data *data)
 {
-	flags->dash = '\0';
-	flags->zero = '\0';
-	flags->dot = '\0';
-	flags->star = '\0';
-	flags->type = '\0';
-	flags->chr_read = 0;
-	flags->left = NULL;
-	flags->right = NULL;
-	return (flags);
+	if (c == '*' && !(data->dot) && (data->width || data->star_w))
+		return (1);
+	else if (c == '*' && data->dot && (data->precision || data->star_p))
+		return (1);
+	else if (c == '-' && (data->zero || data->dot || data->width \
+			|| data->precision || data->star_w || data->star_p))
+		return (1);
+	else if (c == '.' && data->dot)
+		return (1);
+	else if (c == '0' && (data->dot || data->star_w || data->star_p))
+		return (1);
+	return (0);
 }
 
-static t_flags	*fill_left(char c, t_flags *flags)
+static char		*fill_nbr_arg(char *str, char c)
 {
 	char	*aux;
+	char	*aux_free;
 
 	aux = (char *)malloc(2);
 	if (!aux)
 		return (NULL);
 	aux[0] = c;
 	aux[1] = '\0';
-	if (flags->left == NULL)
-		flags->left = ft_strdup(aux);
+	if (str == NULL)
+		str = ft_strdup(aux);
 	else
-		ft_strjoin(flags->left, aux);
+	{
+		aux_free = str;
+		str = ft_strjoin(str, aux);
+		free(aux_free);
+	}
 	free(aux);
-	return (flags);
+	return (str);
 }
 
-static t_flags	*fill_right(char c, t_flags *flags)
+static t_data	*aux_fill_flags(t_data *data, char *str, int i)
 {
-	char	*aux;
-
-	aux = (char *)malloc(2);
-	if (!aux)
-		return (NULL);
-	aux[0] = c;
-	aux[1] = '\0';
-	if (flags->right == NULL)
-		flags->right = ft_strdup(aux);
-	else
-		ft_strjoin(flags->right, aux);
-	free(aux);
-	return (flags);
+	if (str[i] == '-')
+		data->dash = str[i];
+	else if (str[i] == '0' && !(ft_strchr(NUMBERS, str[i - 1])))
+		data->zero = str[i];
+	else if (str[i] == '*' && data->dot == '\0')
+		data->star_w = '*';
+	else if (ft_strchr(NUMBERS, str[i]) && data->dot == '\0')
+		data->width = fill_nbr_arg(data->width, str[i]);
+	else if (str[i] == '.')
+		data->dot = str[i];
+	else if (str[i] == '*' && data->dot != '\0')
+		data->star_p = '*';
+	else if (ft_strchr(NUMBERS, str[i]) && data->dot != '\0')
+		data->precision = fill_nbr_arg(data->precision, str[i]);
+	return (data);
 }
 
-static t_flags	*fill_stc(char *str, t_flags *flags)
+static t_data	*fill_flags(char *str, t_data *data)
 {
 	int i;
 
 	i = -1;
-	while (!(ft_strchr(TYPES, str[++i])))
+	while (!(ft_strchr(TYPES, str[++i])) && data->alternative_read)
 	{
-		if (str[i] == '-')
-		{
-			flags->dash = str[i];
-			if (str[i + 1] == '0')
-				str++;
-		}
-		else if (str[i] == '0')
-			flags->zero = str[i];
-		else if (ft_strchr(NUMBERS, str[i]) && flags->dot == '\0')
-			flags = fill_left(str[i], flags);
-		else if (str[i] == '.')
-			flags->dot = str[i];
-		else if (ft_strchr(NUMBERS, str[i]) && flags->dot != '\0')
-			flags = fill_right(str[i], flags);
+		/*if (check_flags(str[i], data))
+			data->alternative_read = 0;*/
+		data = aux_fill_flags(data, str, i);
 	}
-	flags->type = str[i];
-	return (flags);
+	if (data->alternative_read)
+		data->type = str[i];
+	return (data);
 }
 
-int				ft_flag_time(char *str, t_flags **flags)
+int				ft_flag_time(char *str, t_data **data)
 {
 	int	i;
 
-	i = 0;
-	(*flags)->chr_read = 1;
+	i = 1;
 	if (str[i] == '%')
-		return (((*flags)->chr_read = 1));
+	{
+		(*data)->alternative_read = 1;
+		return ((*data)->alternative_read);
+	}
 	while (ft_strchr(FLAGS, str[i]) || ft_strchr(NUMBERS, str[i]))
 		i++;
 	if (ft_strchr(TYPES, str[i]))
 	{
-		(*flags) = stc_zero_flags(*flags);
-		(*flags)->chr_read = i;
-		(*flags) = fill_stc(str, *flags);
+		(*data)->alternative_read = i;
+		(*data) = fill_flags(str, (*data));
+		if (!((*data)->alternative_read))
+			return ((*data)->alternative_read);
 		return (-1);
 	}
-	return (((*flags)->chr_read = 0));
+	(*data)->alternative_read = 0;
+	return ((*data)->alternative_read = 0);
 }

@@ -21,27 +21,29 @@
 
 # include <stdio.h>
 # include <stdarg.h>
+# include <limits.h>
 # include "libft/libft.h"
 
-typedef struct	s_flags
-{
-	char	dash;
-	char	zero;
-	char	*left;
-	char	dot;
-	char	*right;
-	char	star;
-	char	type;
-	int		chr_read;
-}				t_flags;
-
-typedef struct	s_str
+typedef struct	s_data
 {
 	char	*str;
-	int		count;
-}				t_str;
+	va_list	args;
+	char	dash;
+	char	zero;
+	char	*width;
+	char	star_w;
+	char	dot;
+	char	*precision;
+	char	star_p;
+	char	type;
+	int		alternative_read;
+	int		printed;
+}				t_data;
 
-t_str			*ft_control_base(t_str *result, va_list args);
-int				ft_flag_time(char *str, t_flags **flags);
+t_data			*ft_control_base(t_data *data);
+int				ft_flag_time(char *str, t_data **data);
+t_data			*ft_print_time(t_data *data);
+int				ft_star_pop(t_data **data);
+t_data			*ft_print_char(t_data *data);
 
 #endif
