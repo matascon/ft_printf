@@ -1,8 +1,9 @@
 SRCS	=	ft_printf.c 			\
 			ft_control_base.c		\
 			ft_flag_time.c			\
-			ft_print_time.c	\
-			ft_print_char.c
+			ft_print_time.c			\
+			ft_print_char.c			\
+			ft_print_str.c
 OBJS	=	$(SRCS:.c=.o)
 NAME	=	libftprintf
 CFLAGS	=	-Wall -Werror -Wextra

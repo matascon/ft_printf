@@ -16,7 +16,8 @@ static t_data	*stc_zero_str(t_data *data)
 {
 	data->str = NULL;
 	data->printed = 0;
-	data->alternative_read = 0;
+	data->alternative_reader = 0;
+	data->error = 0;
 	return (data);
 }
 
@@ -44,9 +45,9 @@ int		main()
 {
 	int i;
 
-	i = ft_printf("<%*c fuck up>\n", 5, 'a');
+	i = ft_printf("<%-8.1s>\n", "Mateo");
 	printf("<%i>\n", i);
-	i = printf("<%10.5i fuck up>\n", 5);
+	i = printf("<%-8.1s>\n", "Mateo");
 	printf("<%i>\n", i);
     return (0);
 }

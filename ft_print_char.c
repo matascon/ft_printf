@@ -3,31 +3,25 @@
 static t_data	*parse_char(t_data *data, int width)
 {
 	char	var;
-	int		i;
 
 	var = (char)va_arg(data->args, int);
-	i = -1;
-	width = width - 1;
-	if (data->dash)
+	if ((unsigned int)(data->printed + width) <= (unsigned int)INT_MAX)
 	{
-		ft_putchar_fd(var, 1);
-		(data->printed)++;
-		while (++i < width)
+		if (data->dash)
 		{
-			ft_putchar_fd(' ', 1);
+			ft_putchar_fd(var, 1);
+			(data->printed)++;
+			data = ft_put_space(width - 1, data);
+		}
+		else
+		{
+			data = ft_put_space(width - 1, data);
+			ft_putchar_fd(var, 1);
 			(data->printed)++;
 		}
 	}
 	else
-	{
-		while (++i < width)
-		{
-			ft_putchar_fd(' ', 1);
-			(data->printed)++;
-		}
-		ft_putchar_fd(var, 1);
-		(data->printed)++;
-	}
+		data->error = 1;
 	return (data);
 }
 
@@ -42,6 +36,10 @@ t_data		*ft_print_char(t_data *data)
 		width = ft_star_pop(&data);
 	else if (data->width)
 		width = ft_atoi(data->width);
+	if (data->star_p)
+		precision = ft_star_pop(&data);
+	else if (data->precision)
+		precision = ft_atoi(data->precision);
 	data = parse_char(data, width);
 	return (data);
 }
