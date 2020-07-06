@@ -13,7 +13,7 @@ NAME	=	libftprintf
 CFLAGS	=	-Wall -Werror -Wextra
 
 $(NAME):	$(OBJS) _libft
-			@gcc -o $(NAME) $(OBJS) $(shell find libft/ -name "*.o")
+			@gcc -o $(NAME) $(OBJS) $(shell find libft/ -name "libft.a")
 			#@ar -rcs $(NAME) $(OBJS) $(shell find libft/ -name "*.o")
 			#@ranlib $(NAME)
 

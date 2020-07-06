@@ -50,9 +50,9 @@ int		main()
 	i = printf("<%-8s> <%c%s>\n", "Mateo", 'T', "ascon");
 	printf("<%i>\n", i);
 	ft_printf("\n****************************************\n\n");
-	i = ft_printf("%0-8.3i", 8375);
+	i = ft_printf("<%u>\n", INT_MAX * 2);
 	printf("<%i>\n", i);
-	i = printf("%0-8.3i", 8375);
+	i = printf("<%u>\n", INT_MAX * 2);
 	printf("<%i>\n", i);
     return (0);
 }

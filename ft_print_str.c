@@ -38,7 +38,7 @@ static t_data	*parse_str(t_data *data, int width, int precision)
 	char	*var;
 	int		length;
 
-	var = (char *)va_arg(data->args, char *);
+	var = va_arg(data->args, char *);
 	length = 0;
 	while (var[length] != '\0')
 		length++;

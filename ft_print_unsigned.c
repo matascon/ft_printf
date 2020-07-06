@@ -63,8 +63,9 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 	char			*str;
 	int				length;
 
-	var = (unsigned int)va_arg(data->args, unsigned);
+	var = va_arg(data->args, unsigned);
 	str = ft_itoa_unsigned(var);
+	length = 0;
 	while (str[length] != '\0')
 		length++;
 	str = join_precision(precision - length, str);
