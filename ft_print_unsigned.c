@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/06 08:20:14 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/06 12:22:13 by matascon         ###   ########.fr       */
+/*   Created: 2020/07/06 12:22:32 by matascon          #+#    #+#             */
+/*   Updated: 2020/07/06 12:40:20 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ static t_data	*aux_parse_int(t_data *data, char *str, int width, int len_str)
 
 static t_data	*parse_int(t_data *data, int width, int precision)
 {
-	int		var;
-	char	*str;
-	int		length;
+	unsigned int	var;
+	char			*str;
+	int				length;
 
-	var = (int)va_arg(data->args, int);
-	str = ft_itoa(var);
+	var = (unsigned int)va_arg(data->args, unsigned);
+	str = ft_itoa_unsigned(var);
 	while (str[length] != '\0')
 		length++;
 	str = join_precision(precision - length, str);
@@ -75,7 +75,7 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 	return (data);
 }
 
-t_data			*ft_print_int(t_data *data)
+t_data			*ft_print_unsigned(t_data *data)
 {
 	int		width;
 	int		precision;

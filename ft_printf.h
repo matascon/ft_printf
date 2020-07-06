@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/06 11:20:52 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/06 12:34:08 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ t_data			*ft_put_str(char *str, int length, t_data *data);
 t_data			*ft_print_char(t_data *data);
 t_data			*ft_print_str(t_data *data);
 t_data			*ft_print_int(t_data *data);
+char			*ft_itoa_unsigned(unsigned int n);
+t_data			*ft_print_unsigned(t_data *data);
 
 #endif

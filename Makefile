@@ -5,7 +5,9 @@ SRCS	=	ft_printf.c 			\
 			tools_print.c			\
 			ft_print_char.c			\
 			ft_print_str.c			\
-			ft_print_int.c
+			ft_print_int.c			\
+			ft_itoa_unsigned.c		\
+			ft_print_unsigned.c
 OBJS	=	$(SRCS:.c=.o)
 NAME	=	libftprintf
 CFLAGS	=	-Wall -Werror -Wextra
