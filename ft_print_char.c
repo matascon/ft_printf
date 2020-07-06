@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/06 08:13:45 by matascon          #+#    #+#             */
+/*   Updated: 2020/07/06 08:16:28 by matascon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static t_data	*parse_char(t_data *data, int width)
@@ -25,7 +37,7 @@ static t_data	*parse_char(t_data *data, int width)
 	return (data);
 }
 
-t_data		*ft_print_char(t_data *data)
+t_data			*ft_print_char(t_data *data)
 {
 	int		width;
 	int		precision;

@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/02 12:15:27 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/06 11:20:52 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ int				ft_flag_time(char *str, t_data **data);
 t_data			*ft_print_time(t_data *data);
 int				ft_star_pop(t_data **data);
 t_data			*ft_put_space(int num_spaces, t_data *data);
+t_data			*ft_put_zero(int num_spaces, t_data *data);
 t_data			*ft_put_str(char *str, int length, t_data *data);
 t_data			*ft_print_char(t_data *data);
 t_data			*ft_print_str(t_data *data);
+t_data			*ft_print_int(t_data *data);
 
 #endif

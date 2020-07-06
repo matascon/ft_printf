@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:10 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/02 13:04:15 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/06 11:27:15 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,14 @@ int		main()
 {
 	int i;
 
-	i = ft_printf("<%-8.1s>\n", "Mateo");
+	i = ft_printf("<%-8s> <%c%s>\n", "Mateo", 'T', "ascon");
 	printf("<%i>\n", i);
-	i = printf("<%-8.1s>\n", "Mateo");
+	i = printf("<%-8s> <%c%s>\n", "Mateo", 'T', "ascon");
+	printf("<%i>\n", i);
+	ft_printf("\n****************************************\n\n");
+	i = ft_printf("<%10.3di>\n", 10);
+	printf("<%i>\n", i);
+	i = printf("<%10.3di>\n", 10);
 	printf("<%i>\n", i);
     return (0);
 }

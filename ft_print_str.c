@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/06 08:13:57 by matascon          #+#    #+#             */
+/*   Updated: 2020/07/06 11:02:47 by matascon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static t_data	*aux_parse(t_data *data, char *str, int width, int len_str)
+static t_data	*aux_parse_str(t_data *data, char *str, int width, int len_str)
 {
-	if (data->printed + width <= INT_MAX)
+	if ((unsigned int)(data->printed + width) <= (unsigned int)INT_MAX \
+	|| (unsigned int)(data->printed + len_str) <= (unsigned int)INT_MAX)
 	{
 		if (data->dash)
 		{
@@ -23,17 +36,19 @@ static t_data	*aux_parse(t_data *data, char *str, int width, int len_str)
 static t_data	*parse_str(t_data *data, int width, int precision)
 {
 	char	*var;
-	int		len_str;
+	int		length;
 
 	var = (char *)va_arg(data->args, char *);
-	len_str = ft_strlen(var);
+	length = 0;
+	while (var[length] != '\0')
+		length++;
 	if (precision == -1)
-		data = aux_parse(data, var, width, len_str);
+		data = aux_parse_str(data, var, width, length);
 	else
 	{
-		if (precision <= len_str)
-			len_str = precision;
-		data = data = aux_parse(data, var, width, len_str);		
+		if (precision <= length)
+			length = precision;
+		data = aux_parse_str(data, var, width, length);
 	}
 	return (data);
 }
