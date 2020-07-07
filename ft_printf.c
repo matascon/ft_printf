@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:10 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/06 12:58:51 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/07 12:20:16 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,27 @@ int				ft_printf(const char *format, ...)
 
 int		main()
 {
-	int i;
+	int 	i;
+	char	*j;
 
 	i = ft_printf("<%-8s> <%c%s>\n", "Mateo", 'T', "ascon");
-	printf("<%i>\n", i);
+	ft_printf("<%i>\n", i);
 	i = printf("<%-8s> <%c%s>\n", "Mateo", 'T', "ascon");
-	printf("<%i>\n", i);
+	ft_printf("<%i>\n", i);
 	ft_printf("\n****************************************\n\n");
 	i = ft_printf("<%u>\n", INT_MAX * 2);
-	printf("<%i>\n", i);
+	ft_printf("<%i>\n", i);
 	i = printf("<%u>\n", INT_MAX * 2);
-	printf("<%i>\n", i);
+	ft_printf("<%i>\n", i);
+	ft_printf("\n****************************************\n\n");
+	i = ft_printf("<%-10s>\n", NULL);
+	ft_printf("<%i>\n", i);
+	i = printf("<%-10s>\n", NULL);
+	ft_printf("<%u>\n", i);
+	ft_printf("\n****************************************\n\n");
+	i = ft_printf("<%20p>\n", NULL);
+	ft_printf("<%i>\n", i);
+	i = printf("<%20p>\n", NULL);
+	ft_printf("<%i>\n", i);
     return (0);
 }

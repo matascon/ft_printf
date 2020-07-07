@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:13:45 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/06 08:16:28 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/07 12:24:39 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_data	*parse_char(t_data *data, int width)
 	char	var;
 
 	var = (char)va_arg(data->args, int);
-	if ((unsigned int)(data->printed + width) <= (unsigned int)INT_MAX)
+	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX)
 	{
 		if (data->dash)
 		{
@@ -43,7 +43,7 @@ t_data			*ft_print_char(t_data *data)
 	int		precision;
 
 	width = 0;
-	precision = 0;
+	precision = -1;
 	if (data->star_w)
 		width = ft_star_pop(&data);
 	else if (data->width)

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/06 08:13:57 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/07 12:24:58 by matascon         ###   ########.fr       */
+/*   Created: 2020/07/07 08:22:42 by matascon          #+#    #+#             */
+/*   Updated: 2020/07/07 12:23:45 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_data	*aux_parse_str(t_data *data, char *str, int width, int len_str)
+static t_data	*aux_parse_pointer(t_data *data, int width, char *str, int len)
 {
 	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX \
-	|| (unsigned)(data->printed + len_str) <= (unsigned)INT_MAX)
+	|| (unsigned)(data->printed + len) <= (unsigned)INT_MAX)
 	{
 		if (data->dash)
 		{
-			data = ft_put_str(str, len_str, data);
-			data = ft_put_space(width - len_str, data);
+			data = ft_put_str(str, len, data);
+			data = ft_put_space(width - len, data);
 		}
 		else
 		{
-			data = ft_put_space(width - len_str, data);
-			data = ft_put_str(str, len_str, data);
+			data = ft_put_space(width - len, data);
+			data = ft_put_str(str, len, data);
 		}
 	}
 	else
@@ -33,29 +33,23 @@ static t_data	*aux_parse_str(t_data *data, char *str, int width, int len_str)
 	return (data);
 }
 
-static t_data	*parse_str(t_data *data, int width, int precision)
+static t_data	*parse_pointer(t_data *data, int width)
 {
-	char	*var;
-	int		length;
+	unsigned long	var;
+	char			*str;
+	int				length_str;
 
-	var = va_arg(data->args, char *);
-	length = 0;
-	if (!var)
-		var = ft_strdup("(null)");
-	while (var[length] != '\0')
-		length++;
-	if (precision == -1)
-		data = aux_parse_str(data, var, width, length);
-	else
-	{
-		if (precision <= length)
-			length = precision;
-		data = aux_parse_str(data, var, width, length);
-	}
+	var = va_arg(data->args, unsigned long);
+	str = ft_itoa_base(var, "0123456789abcdef");
+	str = ft_strjoin("0x", str);
+	length_str = 0;
+	while (str[length_str] != '\0')
+		length_str++;
+	data = aux_parse_pointer(data, width, str, length_str);
 	return (data);
 }
 
-t_data			*ft_print_str(t_data *data)
+t_data			*ft_print_pointer(t_data *data)
 {
 	int		width;
 	int		precision;
@@ -70,6 +64,6 @@ t_data			*ft_print_str(t_data *data)
 		precision = ft_star_pop(&data);
 	else if (data->precision)
 		precision = ft_atoi(data->precision);
-	data = parse_str(data, width, precision);
+	data = parse_pointer(data, width);
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:20:14 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/06 12:22:13 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/07 12:23:57 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static char		*join_precision(int n_zeros, char *str)
 
 static t_data	*aux_parse_int(t_data *data, char *str, int width, int len_str)
 {
-	if ((unsigned int)(data->printed + width) <= (unsigned int)INT_MAX || \
-	(unsigned int)(data->printed + len_str <= (unsigned int)INT_MAX))
+	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX || \
+	(unsigned)(data->printed + len_str <= (unsigned)INT_MAX))
 	{
 		if (data->dash)
 		{
@@ -53,7 +53,7 @@ static t_data	*aux_parse_int(t_data *data, char *str, int width, int len_str)
 		}
 	}
 	else
-		data->error = -1;
+		data->error = 1;
 	return (data);
 }
 
@@ -64,11 +64,16 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 	int		length;
 
 	var = va_arg(data->args, int);
-	str = ft_itoa(var);
-	length = 0;
-	while (str[length] != '\0')
-		length++;
-	str = join_precision(precision - length, str);
+	str = ft_itoa_base(var, "0123456789");
+	if (data->dot && precision < 1 && str[0] == '0')
+		str = ft_strdup("");
+	else
+	{
+		length = 0;
+		while (str[length] != '\0')
+			length++;
+		str = join_precision(precision - length, str);
+	}
 	length = 0;
 	while (str[length] != '\0')
 		length++;
@@ -82,7 +87,7 @@ t_data			*ft_print_int(t_data *data)
 	int		precision;
 
 	width = 0;
-	precision = 0;
+	precision = -1;
 	if (data->star_w)
 		width = ft_star_pop(&data);
 	else if (data->width)
