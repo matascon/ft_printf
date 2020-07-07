@@ -18,11 +18,13 @@ t_data	*ft_print_time(t_data *data)
 		data = ft_print_char(data);
 	else if (data->type == 's')
 		data = ft_print_str(data);
+	else if (data->type == 'p')
+		data = ft_print_pointer(data);
 	else if (data->type == 'd' || data->type == 'i')
 		data = ft_print_int(data);
 	else if (data->type == 'u')
 		data = ft_print_unsigned(data);
-	else if (data->type == 'p')
-		data = ft_print_pointer(data);
+	else if (data->type == 'x' || data->type == 'X')
+		data = ft_print_hex(data);
 	return (data);
 }

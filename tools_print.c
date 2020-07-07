@@ -20,6 +20,27 @@ int		ft_star_pop(t_data **data)
 	return (x);
 }
 
+char	*ft_join_precision(int n_zeros, char *str)
+{
+	char	*new_str;
+	char	*aux_free;
+	int		i;
+
+	new_str = ft_strdup("");
+	i = -1;
+	while (++i < n_zeros)
+	{
+		aux_free = new_str;
+		new_str = ft_strjoin(new_str, "0");
+		free(aux_free);
+	}
+	aux_free = new_str;
+	new_str = ft_strjoin(new_str, str);
+	free(aux_free);
+	free(str);
+	return (new_str);
+}
+
 t_data	*ft_put_space(int num_spaces, t_data *data)
 {
 	int	i;

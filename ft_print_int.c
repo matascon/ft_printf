@@ -72,7 +72,7 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 		length = 0;
 		while (str[length] != '\0')
 			length++;
-		str = join_precision(precision - length, str);
+		str = ft_join_precision(precision - length, str);
 	}
 	length = 0;
 	while (str[length] != '\0')

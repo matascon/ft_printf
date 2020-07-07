@@ -46,6 +46,7 @@ t_data			*ft_free_data_strs(t_data *data);
 int				ft_flag_time(char *str, t_data **data);
 t_data			*ft_print_time(t_data *data);
 int				ft_star_pop(t_data **data);
+char			*ft_join_precision(int n_zeros, char *str);
 t_data			*ft_put_space(int num_spaces, t_data *data);
 t_data			*ft_put_zero(int num_spaces, t_data *data);
 t_data			*ft_put_str(char *str, int length, t_data *data);
@@ -55,5 +56,6 @@ t_data			*ft_print_str(t_data *data);
 t_data			*ft_print_int(t_data *data);
 t_data			*ft_print_unsigned(t_data *data);
 t_data			*ft_print_pointer(t_data *data);
+t_data			*ft_print_hex(t_data *data);
 
 #endif
