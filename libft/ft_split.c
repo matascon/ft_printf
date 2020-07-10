@@ -6,13 +6,13 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:38:54 by matascon          #+#    #+#             */
-/*   Updated: 2020/06/29 10:47:30 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/08 11:17:43 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ef_number_str(char *s, char c)
+static int	number_str(char *s, char c)
 {
 	int	n_str;
 	int	check;
@@ -33,7 +33,7 @@ static int	ef_number_str(char *s, char c)
 	return (n_str);
 }
 
-static char	**ef_free_ptr(char **ptr, int i)
+static char	**free_ptr(char **ptr, int i)
 {
 	while (--i >= 0)
 		free(ptr[i]);
@@ -41,7 +41,7 @@ static char	**ef_free_ptr(char **ptr, int i)
 	return (ptr);
 }
 
-static char	**ef_pass_values(char **ptr, char *s, char c, int n_str)
+static char	**pass_values(char **ptr, char *s, char c, int n_str)
 {
 	int	i;
 	int j;
@@ -64,7 +64,7 @@ static char	**ef_pass_values(char **ptr, char *s, char c, int n_str)
 	return (ptr);
 }
 
-static char	**ef_set_ptr(char **ptr, char *s, char c, int n_str)
+static char	**set_ptr(char **ptr, char *s, char c, int n_str)
 {
 	int	i;
 	int	j;
@@ -81,12 +81,12 @@ static char	**ef_set_ptr(char **ptr, char *s, char c, int n_str)
 				size++;
 			ptr[j] = (char *)malloc(size + 1);
 			if (!ptr[j])
-				return (ef_free_ptr(ptr, j));
+				return (free_ptr(ptr, j));
 			i += size;
 			j++;
 		}
 	}
-	ptr = ef_pass_values(ptr, s, c, n_str);
+	ptr = pass_values(ptr, s, c, n_str);
 	return (ptr);
 }
 
@@ -95,10 +95,12 @@ char		**ft_split(char const *s, char c)
 	char	**ptr;
 	int		n_str;
 
-	n_str = ef_number_str((char *)s, c);
+	if (!s)
+		return (NULL);
+	n_str = number_str((char *)s, c);
 	ptr = (char **)malloc(sizeof(char *) * (n_str + 1));
 	if (!ptr)
 		return (NULL);
-	ptr = ef_set_ptr(ptr, (char *)s, c, n_str);
+	ptr = set_ptr(ptr, (char *)s, c, n_str);
 	return (ptr);
 }

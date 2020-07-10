@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-static int	ef_number_digit(int n)
+static int	number_digit(int n)
 {
 	if (n > -10 && n < 10)
 		return (1);
 	else
-		return (1 + ef_number_digit(n / 10));
+		return (1 + number_digit(n / 10));
 }
 
-static char	*ef_become_str(char *ptr, int n, int n_digit)
+static char	*build_str(char *ptr, int n, int n_digit)
 {
 	int	i;
 	int	sign;
@@ -47,12 +47,12 @@ char		*ft_itoa(int n)
 	char	*ptr;
 	int		n_digit;
 
-	n_digit = ef_number_digit(n);
+	n_digit = number_digit(n);
 	if (n < 0)
 		n_digit++;
 	ptr = (char *)malloc(n_digit + 1);
 	if (!ptr)
 		return (NULL);
-	ptr = ef_become_str(ptr, n, n_digit);
+	ptr = build_str(ptr, n, n_digit);
 	return (ptr);
 }

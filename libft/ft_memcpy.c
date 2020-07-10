@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:38:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/06/29 10:38:06 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/08 09:12:28 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
+	if (!src && !dest)
+		return (NULL);
 	i = 0;
 	while (i < n)
 	{

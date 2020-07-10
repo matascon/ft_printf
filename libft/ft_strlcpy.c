@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:39:21 by matascon          #+#    #+#             */
-/*   Updated: 2020/06/29 10:39:22 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/08 09:50:56 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 	size_t	length_src;
 	int		i;
 
+	if (!dest || !src)
+		return (0);
 	length_src = 0;
 	while (src[length_src])
 		length_src++;

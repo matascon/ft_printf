@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:38:10 by matascon          #+#    #+#             */
-/*   Updated: 2020/06/29 10:43:22 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/08 09:13:23 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
+	if (!src && !dest)
+		return (NULL);
 	if (dest > src)
 	{
 		while (n)
