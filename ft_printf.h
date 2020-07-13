@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/07 11:38:55 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:09:42 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,22 @@
 
 typedef struct	s_data
 {
-	char	*str;
-	va_list	args;
-	char	dash;
-	char	zero;
-	char	*width;
-	char	star_w;
-	char	dot;
-	char	*precision;
-	char	star_p;
-	char	type;
-	int		alternative_reader;
-	int		printed;
-	int		error;
+	char		*str;
+	va_list		args;
+	char		dash;
+	char		zero;
+	char		*width;
+	char		star_w;
+	char		dot;
+	char		*precision;
+	char		star_p;
+	char		type;
+	int			alternative_reader;
+	long		printed;
+	int			error;
 }				t_data;
 
+int				ft_printf(const char *format, ...);
 t_data			*ft_control_base(t_data *data);
 t_data			*ft_free_data_strs(t_data *data);
 int				ft_flag_time(char *str, t_data **data);

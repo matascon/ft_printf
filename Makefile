@@ -11,13 +11,13 @@ SRCS	=	ft_printf.c 			\
 			ft_print_unsigned.c		\
 			ft_print_hex.c
 OBJS	=	$(SRCS:.c=.o)
-NAME	=	libftprintf
+NAME	=	libftprintf.a
 CFLAGS	=	-Wall -Werror -Wextra
 
 $(NAME):	$(OBJS) _libft
-			@gcc -o $(NAME) $(OBJS) $(shell find libft/ -name "libft.a")
-			#@ar -rcs $(NAME) $(OBJS) $(shell find libft/ -name "*.o")
-			#@ranlib $(NAME)
+			#@gcc -o $(NAME) $(OBJS) $(shell find libft/ -name "libft.a")
+			@ar -rcs $(NAME) $(OBJS) $(shell find libft/ -name "*.o")
+			@ranlib $(NAME)
 
 .c.o:
 			@gcc -c $< -o $(<:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:37:05 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/06 11:20:05 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/13 10:55:30 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char		*fill_nbr_arg(char *str, char c)
 	return (str);
 }
 
-static t_data	*aux_fill_flags(t_data *data, char *str, int i)
+static t_data	*fill_flags(t_data *data, char *str, int i)
 {
 	if (str[i] == '-')
 		data->dash = str[i];
@@ -70,42 +70,25 @@ static t_data	*aux_fill_flags(t_data *data, char *str, int i)
 	return (data);
 }
 
-static t_data	*fill_flags(char *str, t_data *data)
-{
-	int i;
-
-	i = -1;
-	while (!(ft_strchr(TYPES, str[++i])) && data->alternative_reader)
-	{
-		/*if (check_flags(str[i], data))
-			data->alternative_reader = 0;*/
-		data = aux_fill_flags(data, str, i);
-	}
-	if (data->alternative_reader)
-		data->type = str[i];
-	return (data);
-}
-
 int				ft_flag_time(char *str, t_data **data)
 {
 	int	i;
 
 	i = 1;
 	if (str[i] == '%')
+		return (((*data)->alternative_reader)++);
+	while ((ft_strchr(FLAGS, str[i]) || ft_strchr(NUMBERS, str[i])) \
+	&& str[i])
+		*data = fill_flags(*data, str, i++);
+	(*data)->alternative_reader = i;
+	if (ft_strchr(TYPES, str[i]) && str[i] != '\0')
 	{
-		(*data)->alternative_reader = 1;
-		return ((*data)->alternative_reader);
-	}
-	while (ft_strchr(FLAGS, str[i]) || ft_strchr(NUMBERS, str[i]))
-		i++;
-	if (ft_strchr(TYPES, str[i]))
-	{
-		(*data)->alternative_reader = i;
-		(*data) = fill_flags(str, (*data));
-		if (!((*data)->alternative_reader))
-			return ((*data)->alternative_reader);
+		(*data)->type = str[i];
+		/*if (!((*data)->alternative_reader))
+			return ((*data)->alternative_reader);*/
 		return (-1);
 	}
-	(*data)->alternative_reader = 0;
+	if (ft_isprint(str[i]))
+		((*data)->alternative_reader)++;
 	return ((*data)->alternative_reader);
 }

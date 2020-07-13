@@ -6,11 +6,31 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:13:45 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/07 12:24:39 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:56:40 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static t_data	*aux_parse_char(t_data *data, char var, int width)
+{
+	if (data->dash)
+	{
+		ft_putchar_fd(var, 1);
+		(data->printed)++;
+		data = ft_put_space(width - 1, data);
+	}
+	else
+	{
+		if (data->zero)
+			data = ft_put_zero(width - 1, data);
+		else
+			data = ft_put_space(width - 1, data);
+		ft_putchar_fd(var, 1);
+		(data->printed)++;
+	}
+	return (data);
+}
 
 static t_data	*parse_char(t_data *data, int width)
 {
@@ -18,20 +38,7 @@ static t_data	*parse_char(t_data *data, int width)
 
 	var = (char)va_arg(data->args, int);
 	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX)
-	{
-		if (data->dash)
-		{
-			ft_putchar_fd(var, 1);
-			(data->printed)++;
-			data = ft_put_space(width - 1, data);
-		}
-		else
-		{
-			data = ft_put_space(width - 1, data);
-			ft_putchar_fd(var, 1);
-			(data->printed)++;
-		}
-	}
+		data = aux_parse_char(data, var, width);
 	else
 		data->error = 1;
 	return (data);

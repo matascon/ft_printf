@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:37:46 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/06 08:14:02 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:26:42 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ static t_data	*stc_zero_flags(t_data *data)
 	return (data);
 }
 
-t_data	*ft_control_base(t_data *data)
+t_data			*ft_control_base(t_data *data)
 {
 	int	i;
+	int aux;
+	char	*aux_p;
 
 	i = -1;
-	while (data->str[++i] != '\0' && data && data->printed < INT_MAX \
-	&& !(data->error))
+	while (data->str[++i] != '\0' && data && \
+	data->printed < INT_MAX && !(data->error))
 	{
 		data = stc_zero_flags(data);
 		if (data->str[i] == '%')
@@ -50,13 +52,11 @@ t_data	*ft_control_base(t_data *data)
 			i += data->alternative_reader;
 			data = free_data_strs(data);
 		}
-		if (!(data->type) && data)
+		if (!(data->type) && data && data->str[i] != '\0')
 		{
 			ft_putchar_fd(data->str[i], 1);
 			(data->printed)++;
 		}
 	}
-	if (data->error)
-		data->printed = -1;
 	return (data);
 }
