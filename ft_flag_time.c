@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:37:05 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/13 10:55:30 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:28:21 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ int				ft_flag_time(char *str, t_data **data)
 	if (ft_strchr(TYPES, str[i]) && str[i] != '\0')
 	{
 		(*data)->type = str[i];
-		/*if (!((*data)->alternative_reader))
-			return ((*data)->alternative_reader);*/
 		return (-1);
 	}
 	if (ft_isprint(str[i]))

@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/13 11:09:42 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/14 09:07:32 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # ifndef PARAMETERS_FOR_FLAGS
-#  define FLAGS "-0.*\0"
+#  define FLAGS " -0.*\0"
 #  define TYPES "cspdiuxX\0"
 #  define NUMBERS "1234567890\0"
 # endif

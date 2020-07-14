@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:13:45 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/13 11:56:40 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:59:32 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_data			*ft_print_char(t_data *data)
 	int		precision;
 
 	width = 0;
-	precision = -1;
+	precision = 0;
 	if (data->star_w)
 		width = ft_star_pop(&data);
 	else if (data->width)

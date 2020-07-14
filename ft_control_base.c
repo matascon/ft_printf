@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:37:46 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/13 11:26:42 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:39:23 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ static t_data	*stc_zero_flags(t_data *data)
 
 t_data			*ft_control_base(t_data *data)
 {
-	int	i;
-	int aux;
-	char	*aux_p;
+	int		i;
 
 	i = -1;
 	while (data->str[++i] != '\0' && data && \

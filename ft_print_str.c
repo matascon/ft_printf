@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:13:57 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/07 12:24:58 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/14 10:59:49 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ static t_data	*aux_parse_str(t_data *data, char *str, int width, int len_str)
 		}
 		else
 		{
-			data = ft_put_space(width - len_str, data);
+			if (data->zero)
+				data = ft_put_zero(width - len_str, data);
+			else
+				data = ft_put_space(width - len_str, data);
 			data = ft_put_str(str, len_str, data);
 		}
 	}
@@ -44,14 +47,9 @@ static t_data	*parse_str(t_data *data, int width, int precision)
 		var = ft_strdup("(null)");
 	while (var[length] != '\0')
 		length++;
-	if (precision == -1)
-		data = aux_parse_str(data, var, width, length);
-	else
-	{
-		if (precision <= length)
-			length = precision;
-		data = aux_parse_str(data, var, width, length);
-	}
+	if (precision < length && data->dot)
+		length = precision;
+	data = aux_parse_str(data, var, width, length);
 	return (data);
 }
 
@@ -61,7 +59,7 @@ t_data			*ft_print_str(t_data *data)
 	int		precision;
 
 	width = 0;
-	precision = -1;
+	precision = 0;
 	if (data->star_w)
 		width = ft_star_pop(&data);
 	else if (data->width)
