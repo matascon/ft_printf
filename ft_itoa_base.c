@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 09:47:17 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/07 11:53:05 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/15 09:11:12 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char	*ft_itoa_base(long number, char *base)
 	size_base = ft_strlen(base);
 	if (!size_base)
 		return (str);
+	if (number < 0)
+		number *= -1;
 	n_digit = number_digit(number, size_base);
 	str = (char *)malloc(n_digit + 1);
 	if (!str)

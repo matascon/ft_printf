@@ -6,32 +6,11 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 12:22:32 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/07 12:24:09 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/15 09:40:35 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static char		*join_precision(int n_zeros, char *str)
-{
-	char	*new_str;
-	char	*aux_free;
-	int		i;
-
-	new_str = ft_strdup("");
-	i = -1;
-	while (++i < n_zeros)
-	{
-		aux_free = new_str;
-		new_str = ft_strjoin(new_str, "0");
-		free(aux_free);
-	}
-	aux_free = new_str;
-	new_str = ft_strjoin(new_str, str);
-	free(aux_free);
-	free(str);
-	return (new_str);
-}
 
 static t_data	*aux_parse_u(t_data *data, char *str, int width, int len_str)
 {

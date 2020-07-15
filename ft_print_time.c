@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:14:08 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/13 10:13:22 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/15 10:49:58 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ t_data	*ft_print_time(t_data *data)
 		data = ft_print_unsigned(data);
 	else if (data->type == 'x' || data->type == 'X')
 		data = ft_print_hex(data);
+	else if (data->type == '%')
+		data = ft_print_percent(data);
 	return (data);
 }

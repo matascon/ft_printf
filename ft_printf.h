@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 08:29:06 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/14 09:07:32 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/15 10:57:21 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # ifndef PARAMETERS_FOR_FLAGS
 #  define FLAGS " -0.*\0"
-#  define TYPES "cspdiuxX\0"
+#  define TYPES "cspdiuxX%\0"
 #  define NUMBERS "1234567890\0"
 # endif
 
@@ -28,6 +28,7 @@ typedef struct	s_data
 {
 	char		*str;
 	va_list		args;
+	int			space;
 	char		dash;
 	char		zero;
 	char		*width;
@@ -58,5 +59,6 @@ t_data			*ft_print_int(t_data *data);
 t_data			*ft_print_unsigned(t_data *data);
 t_data			*ft_print_pointer(t_data *data);
 t_data			*ft_print_hex(t_data *data);
+t_data			*ft_print_percent(t_data *data);
 
 #endif

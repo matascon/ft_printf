@@ -368,8 +368,8 @@ int		main()
 	printf("{%d}\n", printf("\033[1;32mTest 47 => \033[0m|%.2s|", "salut"));
 	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 47 => \033[0m|%.2s|", "salut"));
 
-	printf(" ---> {%i}\n", printf("%-010.4s", "mateo"));
-	ft_printf(" ---> {%i}\n",  ft_printf("%-010.4s", "mateo"));
+	printf(" ---> {%i}\n", printf("%010.4s", "mateo"));
+	ft_printf(" ---> {%i}\n",  ft_printf("%010.4s", "mateo"));
 
 	printf(" ---> {%i}\n", printf("%     0*s\n", 10, "hola"));
 	ft_printf(" ---> {%i}\n",  ft_printf("%     0*s\n", 10, "hola"));
@@ -455,5 +455,482 @@ int		main()
 	printf(" ---> {%i}\n", printf("%     .p\n", 0));
 	ft_printf(" ---> {%i}\n",  ft_printf("%     .p\n", 0));
 
+
+
+
+
+	printf("\n\n\033[1;41m|-------------------------| (Lancement du test SIGNED DECIMAL en cours...) |-------------------------|\033[0m\n");
+	
+	printf("\033[1;32m|-----| LE VRAI |-----|\033[0m\n");
+	ft_printf("\033[1;31m|-----| LE NOTRE |-----|\033[0m\n");
+	
+	printf("{%d}\n", printf("\033[1;32mTest 3 => \033[0m|%4.3i|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 3 => \033[0m|%4.3i|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 4 => \033[0m|%-3.1i|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 4 => \033[0m|%-3.1i|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 5 => \033[0m|%-4.1i|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 5 => \033[0m|%-4.1i|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 6 => \033[0m|%-4d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 6 => \033[0m|%-4d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 7 => \033[0m|%.d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 7 => \033[0m|%.d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 9 => \033[0m|% d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 9 => \033[0m|% d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 10 => \033[0m|%d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 10 => \033[0m|%d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 11 => \033[0m|%05.1d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 11 => \033[0m|%05.1d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 13 => \033[0m|%-09.5d|", -42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 13 => \033[0m|%-09.5d|", -42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 14 => \033[0m|%09.3d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 14 => \033[0m|%09.3d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 15 => \033[0m|%09.2d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 15 => \033[0m|%09.2d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 16 => \033[0m|%.5d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 16 => \033[0m|%.5d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 17 => \033[0m|%.5d|", 400000));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 17 => \033[0m|%.5d|", 400000));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 18 => \033[0m|%-.5d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 18 => \033[0m|%-.5d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 19 => \033[0m|% .5d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 19 => \033[0m|% .5d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 21 => \033[0m|%.5d|", -42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 21 => \033[0m|%.5d|", -42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 22 => \033[0m|%-.5d|", -42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 22 => \033[0m|%-.5d|", -42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 23 => \033[0m|% .5d|", -42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 23 => \033[0m|% .5d|", -42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 25 => \033[0m|%d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 25 => \033[0m|%d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 39 => \033[0m|%15.4d|", -42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 39 => \033[0m|%15.4d|", -42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 40 => \033[0m|%8.4d|", -424242424));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 40 => \033[0m|%8.4d|", -424242424));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 56 => \033[0m|%10.5d|, |%10.5d|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 56 => \033[0m|%10.5d|, |%10.5d|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 56 => \033[0m|abcdefg%0.0d|abcde", 012));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 56 => \033[0m|abcdefg%0.0d|abcde", 012));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 57 => \033[0m|abcdefg%00.0d|abcde", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 57 => \033[0m|abcdefg%00.0d|abcde", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 58 => \033[0m|abcdefg%00.d|abcde", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 58 => \033[0m|abcdefg%00.d|abcde", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 59 => \033[0m|abcdefg%00d|abcde", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 59 => \033[0m|abcdefg%00d|abcde", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 60 => \033[0m|abcdefg%.d|abcde", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 60 => \033[0m|abcdefg%.d|abcde", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 61 => \033[0m|abcdefg%.0d|abcde", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 61 => \033[0m|abcdefg%.0d|abcde", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 62 => \033[0mOKLM"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 62 => \033[0mOKLM"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 63 => \033[0m"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 63 => \033[0m"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 64 => \033[0m|%05.1d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 64 => \033[0m|%05.1d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 66 => \033[0m|%09.5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 66 => \033[0m|%09.5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 67 => \033[0m|%09.3d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 67 => \033[0m|%09.3d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 68 => \033[0m|%09.2d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 68 => \033[0m|%09.2d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 69 => \033[0m|%.5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 69 => \033[0m|%.5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 70 => \033[0m|%.5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 70 => \033[0m|%.5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 71 => \033[0m|%-.5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 71 => \033[0m|%-.5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 72 => \033[0m|% .5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 72 => \033[0m|% .5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 74 => \033[0m|%.5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 74 => \033[0m|%.5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 75 => \033[0m|%-.5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 75 => \033[0m|%-.5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 76 => \033[0m|% .5d|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 76 => \033[0m|% .5d|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 78 => \033[0m|%.d, %.0d|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 78 => \033[0m|%.d, %.0d|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 79 => \033[0m|%.d, %.2d|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 79 => \033[0m|%.d, %.2d|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 80 => \033[0m|%.d, %.0d|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 80 => \033[0m|%.d, %.0d|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 81 => \033[0m|%.d, %.2d|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 81 => \033[0m|%.d, %.2d|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 82 => \033[0m|%d, %d, %d|", 0, -02, 02));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 82 => \033[0m|%d, %d, %d|", 0, -02, 02));
+
+	printf(" ---> {%i}\n", printf("%     .i", 0));
+	ft_printf(" ---> {%i}\n",  ft_printf("%     .i", 0));
+
+
+
+
+
+	printf("\n\n\033[1;41m|-----------------------| (Lancement du test UNSIGNED DECIMAL en cours...) |-----------------------|\033[0m\n");
+	
+	printf("\033[1;32m|-----| LE VRAI |-----|\033[0m\n");
+	ft_printf("\033[1;31m|-----| LE NOTRE |-----|\033[0m\n");
+	
+	printf("{%d}\n", printf("\033[1;32mTest 1 => \033[0m|%.u, %.0u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 1 => \033[0m|%.u, %.0u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 2 => \033[0m|%.u, % .0u|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 2 => \033[0m|%.u, % .0u|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 4 => \033[0m|%u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 4 => \033[0m|%u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 11 => \033[0m|%u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 11 => \033[0m|%u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 12 => \033[0m|%0u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 12 => \033[0m|%0u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 13 => \033[0m|%05.2u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 13 => \033[0m|%05.2u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 14 => \033[0m|%-9u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 14 => \033[0m|%-9u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 26 => \033[0m|%05.9u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 26 => \033[0m|%05.9u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 27 => \033[0m|%-0u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 27 => \033[0m|%-0u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 28 => \033[0m|%-0.u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 28 => \033[0m|%-0.u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 29 => \033[0m|%-0.5u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 29 => \033[0m|%-0.5u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 30 => \033[0m|%09.5u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 30 => \033[0m|%09.5u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 31 => \033[0m|%-9.5u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 31 => \033[0m|%-9.5u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 32 => \033[0m|%-5.9u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 32 => \033[0m|%-5.9u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 33 => \033[0m|%5.u|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 33 => \033[0m|%5.u|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 34 => \033[0m|%.u, %.0u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 34 => \033[0m|%.u, %.0u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 35 => \033[0m|%.u, %.2u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 35 => \033[0m|%.u, %.2u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 36 => \033[0m|%.u, %.0u|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 36 => \033[0m|%.u, %.0u|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 37 => \033[0m|%.u, %.2u|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 37 => \033[0m|%.u, %.2u|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 38 => \033[0m|%.u, %.0u|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 38 => \033[0m|%.u, %.0u|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 39 => \033[0m|%.u, %.2u|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 39 => \033[0m|%.u, %.2u|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 40 => \033[0m|%.u, %.2u, %u|", 0, -02, 02));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 40 => \033[0m|%.u, %.2u, %u|", 0, -02, 02));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 41 => \033[0m|%05u|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 41 => \033[0m|%05u|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 42 => \033[0m|%9.2u|", 1234));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 42 => \033[0m|%9.2u|", 1234));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 44 => \033[0m|%.0u|, |%.u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 44 => \033[0m|%.0u|, |%.u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 45 => \033[0m|%.1u|, |%.1u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 45 => \033[0m|%.1u|, |%.1u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 46 => \033[0m|%.5u|, |%.5u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 46 => \033[0m|%.5u|, |%.5u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 47 => \033[0m|%10.5u|, |%10.5u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 47 => \033[0m|%10.5u|, |%10.5u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 48 => \033[0m|%-10.5u|, |%-10.5u|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 48 => \033[0m|%-10.5u|, |%-10.5u|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 49 => \033[0m|%u|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 49 => \033[0m|%u|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 50 => \033[0m|%-5u|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 50 => \033[0m|%-5u|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 51 => \033[0m|%u|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 51 => \033[0m|%u|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 52 => \033[0m|%5u|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 52 => \033[0m|%5u|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 58 => \033[0m|%u|", -523));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 58 => \033[0m|%u|", -523));
+
+
+
+
+
+	printf("\n\n\033[1;41m|-----------------------| (Lancement du test HEXADECIMAL en cours...) |-----------------------|\033[0m\n");
+	
+	printf("\033[1;32m|-----| LE VRAI |-----|\033[0m\n");
+	ft_printf("\033[1;31m|-----| LE NOTRE |-----|\033[0m\n");
+	
+	printf("{%d}\n", printf("\033[1;32mTest 2 => \033[0m|% x|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 2 => \033[0m|% x|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 3 => \033[0m|%x|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 3 => \033[0m|%x|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 10 => \033[0m|%X|", (unsigned int)42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 10 => \033[0m|%X|", (unsigned int)42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 21 => \033[0m|%-5x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 21 => \033[0m|%-5x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 22 => \033[0m|%6.9x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 22 => \033[0m|%6.9x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 23 => \033[0m|%-9.5x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 23 => \033[0m|%-9.5x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 28 => \033[0m|%-9.1x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 28 => \033[0m|%-9.1x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 29 => \033[0m|%05x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 29 => \033[0m|%05x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 30 => \033[0m|%0.5x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 30 => \033[0m|%0.5x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 31 => \033[0m|%.5x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 31 => \033[0m|%.5x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 32 => \033[0m|%09.5x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 32 => \033[0m|%09.5x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 33 => \033[0m|%09.3x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 33 => \033[0m|%09.3x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 34 => \033[0m|%09.2x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 34 => \033[0m|%09.2x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 37 => \033[0m|%.x, %.2x|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 37 => \033[0m|%.x, %.2x|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 38 => \033[0m|%.x, %.0x|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 38 => \033[0m|%.x, %.0x|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 39 => \033[0m|%.x, %.2x|", 42, 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 39 => \033[0m|%.x, %.2x|", 42, 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 40 => \033[0m|%.x, %.2x, %x|", 0, -02, 02));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 40 => \033[0m|%.x, %.2x, %x|", 0, -02, 02));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 41 => \033[0m|%05x|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 41 => \033[0m|%05x|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 42 => \033[0m|%9.2x|", 1234));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 42 => \033[0m|%9.2x|", 1234));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 44 => \033[0m|%.0x|, |%.x|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 44 => \033[0m|%.0x|, |%.x|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 45 => \033[0m|%.1x|, |%.1x|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 45 => \033[0m|%.1x|, |%.1x|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 46 => \033[0m|%.5x|, |%.5x|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 46 => \033[0m|%.5x|, |%.5x|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 47 => \033[0m|%10.5x|, |%10.5x|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 47 => \033[0m|%10.5x|, |%10.5x|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 48 => \033[0m|%-10.5x|, |%-10.5x|", 0, 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 48 => \033[0m|%-10.5x|, |%-10.5x|", 0, 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 49 => \033[0m|%x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 49 => \033[0m|%x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 50 => \033[0m|%-5x|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 50 => \033[0m|%-5x|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 51 => \033[0m|%x|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 51 => \033[0m|%x|", 0));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 52 => \033[0m|%5x|", 0));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 52 => \033[0m|%5x|", 0));
+
+	printf(" ---> {%i}\n", printf("%   10   .5x", 236));
+	ft_printf(" ---> {%i}\n",  ft_printf("%   10   .5x", 236));
+
+
+
+
+
+	printf("\n\n\033[1;41m|----------------------------| (Lancement du test bullshit en cours...) |----------------------------|\033[0m\n");
+	
+	printf("\033[1;32m|-----| LE VRAI |-----|\033[0m\n");
+	ft_printf("\033[1;31m|-----| LE NOTRE |-----|\033[0m\n");
+	
+	printf("{%d}\n", printf("\033[1;32mTest 1 => \033[0m|%|"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 1 => \033[0m|%|"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 2 => \033[0m|% |"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 2 => \033[0m|% |"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 3 => \033[0m|% h|"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 3 => \033[0m|% h|"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 4 => \033[0m|%h|"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 4 => \033[0m|%h|"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 5 => \033[0m|%Z|"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 5 => \033[0m|%Z|"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 6 => \033[0m|% hZ|"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 6 => \033[0m|% hZ|"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 7 => \033[0m|% hZ%|"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 7 => \033[0m|% hZ%|"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 8 => \033[0m|% Z|", "test"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 8 => \033[0m|% Z|", "test"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 9 => \033[0m|% Z |", "test"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 9 => \033[0m|% Z |", "test"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 10 => \033[0m|% Z%s|", "test"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 10 => \033[0m|% Z%s|", "test"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 11 => \033[0m|%%%|", "test"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 11 => \033[0m|%%%|", "test"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 12 => \033[0m|%%   %|", "test"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 12 => \033[0m|%%   %|", "test"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 13 => \033[0m|%ll#x|", 9223372036854775807));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 13 => \033[0m|%ll#x|", 9223372036854775807));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 14 => \033[0m|%010s is a string|", "this"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 14 => \033[0m|%010s is a string|", "this"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 15 => \033[0m|%05c|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 15 => \033[0m|%05c|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 16 => \033[0m|% Z|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 16 => \033[0m|% Z|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 17 => \033[0m|%5+d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 17 => \033[0m|%5+d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 18 => \033[0m|%5+d|", -42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 18 => \033[0m|%5+d|", -42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 19 => \033[0m|%-5+d|", 42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 19 => \033[0m|%-5+d|", 42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 20 => \033[0m|%-5+d|", -42));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 20 => \033[0m|%-5+d|", -42));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 21 => \033[0m|%zhd|", "4294967296"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 21 => \033[0m|%zhd|", "4294967296"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 22 => \033[0m|%jzd|", "9223372036854775807"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 22 => \033[0m|%jzd|", "9223372036854775807"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 23 => \033[0m|%jhd|", "9223372036854775807"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 23 => \033[0m|%jhd|", "9223372036854775807"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 24 => \033[0m|%lhl|", "9223372036854775807"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 24 => \033[0m|%lhl|", "9223372036854775807"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 25 => \033[0m|%lhlz|", "9223372036854775807"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 25 => \033[0m|%lhlz|", "9223372036854775807"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 26 => \033[0m|%zj|", "9223372036854775807"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 26 => \033[0m|%zj|", "9223372036854775807"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 27 => \033[0m|%lhh|", "2147483647"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 27 => \033[0m|%lhh|", "2147483647"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 28 => \033[0m|%hhld|", "128"));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 28 => \033[0m|%hhld|", "128"));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 29 => \033[0m@main_ftprintf: |%####000033..1..#00d|", 256));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 29 => \033[0m@main_ftprintf: |%####000033..1..#00d|", 256));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 30 => \033[0m@main_ftprintf: |%####000033..1d|", 256));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 30 => \033[0m@main_ftprintf: |%####000033..1d|", 256));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 31 => \033[0m@main_ftprintf: |%###-#000033...12..#0+0d|", 256));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 31 => \033[0m@main_ftprintf: |%###-#000033...12..#0+0d|", 256));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 32 => \033[0m@main_ftprintf: |%33d|", 256));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 32 => \033[0m@main_ftprintf: |%33d|", 256));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 33 => \033[0m@main_ftprintf: |%+33d|", 256));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 33 => \033[0m@main_ftprintf: |%+33d|", 256));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 34 => \033[0m@main_ftprintf: |%-+33d|", 256));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 34 => \033[0m@main_ftprintf: |%-+33d|", 256));
+	
+	printf("{%d}\n", printf("\033[1;32mTest 35 => \033[0m@main_ftprintf: |%-+33.d|", 256));
+	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 35 => \033[0m@main_ftprintf: |%-+33.d|", 256));
+
+	ft_printf("\n\n*********************PERCENT*****************************\n\n");
+
+	printf(" ---> {%i}\n", printf("<%  5.%>"));
+	ft_printf(" ---> {%i}\n", ft_printf("<%  5.%>"));
+
 	return (0);
+
 }

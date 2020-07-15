@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/06 08:13:45 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/15 11:03:11 by matascon         ###   ########.fr       */
+/*   Created: 2020/07/15 10:50:35 by matascon          #+#    #+#             */
+/*   Updated: 2020/07/15 11:10:03 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_data	*aux_parse_char(t_data *data, char var, int width)
+static t_data	*aux_parse_percent(t_data *data, char var, int width)
 {
 	if (data->dash)
 	{
@@ -32,19 +32,19 @@ static t_data	*aux_parse_char(t_data *data, char var, int width)
 	return (data);
 }
 
-static t_data	*parse_char(t_data *data, int width)
+static t_data	*parse_percent(t_data *data, int width)
 {
 	char	var;
 
-	var = (char)va_arg(data->args, int);
+	var = data->type;
 	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX)
-		data = aux_parse_char(data, var, width);
+		data = aux_parse_percent(data, var, width);
 	else
 		data->error = 1;
 	return (data);
 }
 
-t_data			*ft_print_char(t_data *data)
+t_data			*ft_print_percent(t_data *data)
 {
 	int		width;
 	int		precision;
@@ -59,6 +59,6 @@ t_data			*ft_print_char(t_data *data)
 		precision = ft_star_pop(&data);
 	else if (data->precision)
 		precision = ft_atoi(data->precision);
-	data = parse_char(data, width);
+	data = parse_percent(data, width);
 	return (data);
 }

@@ -16,7 +16,7 @@ static char		*ft_str_upper(char *str)
 static t_data	*aux_parse_hex(t_data *data, char *str, int width, int len_str)
 {
 	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX || \
-	(unsigned)(data->printed + len_str <= (unsigned)INT_MAX))
+	(unsigned)(data->printed + len_str) <= (unsigned)INT_MAX)
 	{
 		if (data->dash)
 		{
@@ -45,7 +45,7 @@ static t_data	*parse_hex(t_data *data, int width, int precision)
 
 	var = va_arg(data->args, unsigned);
 	str = ft_itoa_base(var, "0123456789abcdef");
-	if (data->dot && precision < 1 && str[0] == '0')
+	if (data->dot && precision == 0 && var == 0)
 		str = ft_strdup("");
 	else
 	{
@@ -69,7 +69,7 @@ t_data			*ft_print_hex(t_data *data)
 	int		precision;
 
 	width = 0;
-	precision = -1;
+	precision = 0;
 	if (data->star_w)
 		width = ft_star_pop(&data);
 	else if (data->width)

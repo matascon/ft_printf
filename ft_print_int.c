@@ -6,38 +6,18 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:20:14 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/07 12:23:57 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/15 11:18:02 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*join_precision(int n_zeros, char *str)
-{
-	char	*new_str;
-	char	*aux_free;
-	int		i;
-
-	new_str = ft_strdup("");
-	i = -1;
-	while (++i < n_zeros)
-	{
-		aux_free = new_str;
-		new_str = ft_strjoin(new_str, "0");
-		free(aux_free);
-	}
-	aux_free = new_str;
-	new_str = ft_strjoin(new_str, str);
-	free(aux_free);
-	free(str);
-	return (new_str);
-}
-
 static t_data	*aux_parse_int(t_data *data, char *str, int width, int len_str)
 {
 	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX || \
-	(unsigned)(data->printed + len_str <= (unsigned)INT_MAX))
+	(unsigned)(data->printed + len_str + data->space) <= (unsigned)INT_MAX)
 	{
+		data = ft_put_space(data->space, data);
 		if (data->dash)
 		{
 			data = ft_put_str(str, len_str, data);
@@ -46,7 +26,7 @@ static t_data	*aux_parse_int(t_data *data, char *str, int width, int len_str)
 		else
 		{
 			if (data->dot || !(data->zero))
-				data = ft_put_space(width - len_str, data);
+				data = ft_put_space(width - len_str - data->space, data);
 			else if (data->zero)
 				data = ft_put_zero(width - len_str, data);
 			data = ft_put_str(str, len_str, data);
@@ -64,8 +44,8 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 	int		length;
 
 	var = va_arg(data->args, int);
-	str = ft_itoa_base(var, "0123456789");
-	if (data->dot && precision < 1 && str[0] == '0')
+	str = ft_itoa_base((long)var, "0123456789");
+	if (data->dot && precision == 0 && var == 0)
 		str = ft_strdup("");
 	else
 	{
@@ -73,6 +53,11 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 		while (str[length] != '\0')
 			length++;
 		str = ft_join_precision(precision - length, str);
+	}
+	if (var < 0)
+	{
+		str = ft_strsjoin("-", str, 0, 1);
+		data->space = 0;
 	}
 	length = 0;
 	while (str[length] != '\0')
@@ -87,7 +72,7 @@ t_data			*ft_print_int(t_data *data)
 	int		precision;
 
 	width = 0;
-	precision = -1;
+	precision = 0;
 	if (data->star_w)
 		width = ft_star_pop(&data);
 	else if (data->width)

@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:37:46 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/14 10:39:23 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/15 08:35:08 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static t_data	*free_data_strs(t_data *data)
 
 static t_data	*stc_zero_flags(t_data *data)
 {
+	data->space = 0;
 	data->dash = '\0';
 	data->zero = '\0';
 	data->dot = '\0';
