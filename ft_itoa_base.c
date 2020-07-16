@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 09:47:17 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/15 09:11:12 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/16 11:23:21 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	*build_str(long number, char *str, char *base, int n_digit)
 	return (str);
 }
 
-char	*ft_itoa_base(long number, char *base)
+char		*ft_itoa_base(long number, char *base)
 {
 	char	*str;
 	size_t	size_base;

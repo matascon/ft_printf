@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/16 11:23:34 by matascon          #+#    #+#             */
+/*   Updated: 2020/07/16 11:23:36 by matascon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char		*ft_str_upper(char *str)
@@ -78,6 +90,11 @@ t_data			*ft_print_hex(t_data *data)
 		precision = ft_star_pop(&data);
 	else if (data->precision)
 		precision = ft_atoi(data->precision);
+	if (width < 0)
+	{
+		data->dash = '-';
+		width *= -1;
+	}
 	data = parse_hex(data, width, precision);
 	return (data);
 }

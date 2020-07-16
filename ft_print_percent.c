@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 10:50:35 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/15 11:10:03 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/16 10:26:04 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ t_data			*ft_print_percent(t_data *data)
 		precision = ft_star_pop(&data);
 	else if (data->precision)
 		precision = ft_atoi(data->precision);
+	if (width < 0)
+	{
+		data->dash = '-';
+		width *= -1;
+	}
 	data = parse_percent(data, width);
 	return (data);
 }

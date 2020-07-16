@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:13:57 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/14 10:59:49 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/16 10:35:15 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_data	*parse_str(t_data *data, int width, int precision)
 		var = ft_strdup("(null)");
 	while (var[length] != '\0')
 		length++;
-	if (precision < length && data->dot)
+	if (precision < length && data->dot && precision >= 0)
 		length = precision;
 	data = aux_parse_str(data, var, width, length);
 	return (data);
@@ -68,6 +68,11 @@ t_data			*ft_print_str(t_data *data)
 		precision = ft_star_pop(&data);
 	else if (data->precision)
 		precision = ft_atoi(data->precision);
+	if (width < 0)
+	{
+		data->dash = '-';
+		width *= -1;
+	}
 	data = parse_str(data, width, precision);
 	return (data);
 }

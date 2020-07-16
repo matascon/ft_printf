@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:37:05 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/15 10:49:19 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/16 09:46:14 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int				ft_flag_time(char *str, t_data **data)
 		(*data)->type = str[i];
 		return (-1);
 	}
-	if (ft_isprint(str[i]))
-		((*data)->alternative_reader)++;
+	if ((*data)->width)
+		*data = ft_put_space(ft_atoi((*data)->width) - 1, *data);
 	return ((*data)->alternative_reader);
 }

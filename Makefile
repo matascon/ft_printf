@@ -1,3 +1,4 @@
+LIB		=	ft_printf.h
 SRCS	=	ft_printf.c 			\
 			ft_control_base.c		\
 			ft_flag_time.c			\
@@ -38,4 +39,8 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+Norme:		
+			@make Norme -C libft
+			norminette -R CheckForbiddenSourceHeader $(SRCS) $(LIB)
+
+.PHONY:		all clean fclean re Norme

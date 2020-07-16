@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 12:22:32 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/15 09:40:35 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/16 10:26:15 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ t_data			*ft_print_unsigned(t_data *data)
 		precision = ft_star_pop(&data);
 	else if (data->precision)
 		precision = ft_atoi(data->precision);
+	if (width < 0)
+	{
+		data->dash = '-';
+		width *= -1;
+	}
 	data = parse_unsigned(data, width, precision);
 	return (data);
 }
