@@ -39,17 +39,21 @@ static t_data	*aux_parse_str(t_data *data, char *str, int width, int len_str)
 static t_data	*parse_str(t_data *data, int width, int precision)
 {
 	char	*var;
+	char	*str;
 	int		length;
 
 	var = va_arg(data->args, char *);
 	length = 0;
 	if (!var)
-		var = ft_strdup("(null)");
-	while (var[length] != '\0')
+		str = ft_strdup("(null)");
+	else
+		str = ft_strdup(var);
+	while (str[length] != '\0')
 		length++;
 	if (precision < length && data->dot && precision >= 0)
 		length = precision;
-	data = aux_parse_str(data, var, width, length);
+	data = aux_parse_str(data, str, width, length);
+	free(str);
 	return (data);
 }
 

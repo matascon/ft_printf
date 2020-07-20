@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static t_data	*aux_parse_u(t_data *data, char *str, int width, int len_str)
+static t_data	*aux_parse_unsg(t_data *data, char *str, int width, int len_str)
 {
 	if ((unsigned)(data->printed + width) <= (unsigned)INT_MAX || \
 	(unsigned)(data->printed + len_str <= (unsigned)INT_MAX))
@@ -43,11 +43,11 @@ static t_data	*parse_unsigned(t_data *data, int width, int precision)
 	int				length;
 
 	var = va_arg(data->args, unsigned);
-	str = ft_itoa_base(var, "0123456789");
-	if (data->dot && precision < 1 && str[0] == '0')
+	if (data->dot && precision < 1 && var == 0)
 		str = ft_strdup("");
 	else
 	{
+		str = ft_itoa_base(var, "0123456789");
 		length = 0;
 		while (str[length] != '\0')
 			length++;
@@ -56,7 +56,8 @@ static t_data	*parse_unsigned(t_data *data, int width, int precision)
 	length = 0;
 	while (str[length] != '\0')
 		length++;
-	data = aux_parse_u(data, str, width, length);
+	data = aux_parse_unsg(data, str, width, length);
+	free(str);
 	return (data);
 }
 

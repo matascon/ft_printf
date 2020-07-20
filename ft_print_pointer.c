@@ -59,6 +59,7 @@ static t_data	*parse_pointer(t_data *data, int width, int precision)
 			length_str++;
 	}
 	data = aux_parse_pointer(data, width, str, length_str);
+	free(str);
 	return (data);
 }
 

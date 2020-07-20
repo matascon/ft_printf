@@ -20,6 +20,7 @@ static char		*analyze_precision(t_data *data, char *str, int prcs, int var)
 		str = ft_strdup("");
 	else
 	{
+		str = ft_itoa_base((long)var, "0123456789");
 		length = 0;
 		while (str[length] != '\0')
 			length++;
@@ -83,7 +84,6 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 	var = va_arg(data->args, int);
 	if (var < 0)
 		data->space = 0;
-	str = ft_itoa_base((long)var, "0123456789");
 	str = analyze_precision(data, str, precision, var);
 	if (data->zero && !(data->precision) && !(data->dash))
 		data = zero_flag(data, str, var, width);
@@ -96,6 +96,7 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 			length++;
 		data = no_zero_flag(data, str, width, length);
 	}
+	free(str);
 	return (data);
 }
 

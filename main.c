@@ -61,11 +61,11 @@ int		main()
 	printf("%i\n", i);
 	i = printf("%23Q");
 	printf("%i\n", i);
-	printf("\n11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11\n\n");
+	/*printf("\n11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11\n\n");
 	i = ft_printf("%.");
 	printf("%i\n", i);
 	i = printf("%.");
-	printf("%i\n", i);
+	*/printf("%i\n", i);
 	printf("\n12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12\n\n");
 	i = ft_printf("Mateo Tascon %10s xd\n", "Gomez");
 	printf("%i\n", i);

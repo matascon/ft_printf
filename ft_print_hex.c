@@ -56,11 +56,11 @@ static t_data	*parse_hex(t_data *data, int width, int precision)
 	int			length;
 
 	var = va_arg(data->args, unsigned);
-	str = ft_itoa_base(var, "0123456789abcdef");
 	if (data->dot && precision == 0 && var == 0)
 		str = ft_strdup("");
 	else
 	{
+		str = ft_itoa_base(var, "0123456789abcdef");
 		length = 0;
 		while (str[length] != '\0')
 			length++;
@@ -72,6 +72,7 @@ static t_data	*parse_hex(t_data *data, int width, int precision)
 	if (data->type == 'X')
 		str = ft_str_upper(str);
 	data = aux_parse_hex(data, str, width, length);
+	free(str);
 	return (data);
 }
 

@@ -51,7 +51,7 @@ t_data			*ft_control_base(t_data *data)
 			i += data->alternative_reader;
 			data = free_data_strs(data);
 		}
-		if (!(data->type) && data && data->str[i] != '\0')
+		if (!(data->type) && data->str[i] != '\0')
 		{
 			ft_putchar_fd(data->str[i], 1);
 			(data->printed)++;

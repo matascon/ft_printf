@@ -38,6 +38,7 @@ int				ft_printf(const char *format, ...)
 	if (data->error)
 		data->printed = -1;
 	n_char = data->printed;
+	free(data->str);
 	va_end(data->args);
 	free(data);
 	return (n_char);
