@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 08:20:14 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/16 10:33:12 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/21 10:04:45 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static t_data	*parse_int(t_data *data, int width, int precision)
 	if (var < 0)
 		data->space = 0;
 	str = analyze_precision(data, str, precision, var);
-	if (data->zero && !(data->precision) && !(data->dash))
+	if (data->zero && !(data->dot) && !(data->dash))
 		data = zero_flag(data, str, var, width);
 	else
 	{

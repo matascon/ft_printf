@@ -6,13 +6,28 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 08:22:42 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/16 10:25:48 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/21 10:02:44 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_data	*aux_parse_pointer(t_data *data, int width, char *str, int len)
+static t_data	*zero_flag(t_data *data, int width, char *str, int len)
+{
+	if ((unsigned)(data->printed + width + 2) <= (unsigned)INT_MAX \
+	|| (unsigned)(data->printed + len + 2) <= (unsigned)INT_MAX)
+	{
+		data = ft_put_str("0x\0", 2, data);
+		data = ft_put_zero(width - len - 2, data);
+		data = ft_put_str(str, len, data);
+	}
+	else
+		data->error = 1;
+	free(str);
+	return (data);
+}
+
+static t_data	*no_zero_flag(t_data *data, int width, char *str, int len)
 {
 	if ((unsigned)(data->printed + width + 2) <= (unsigned)INT_MAX \
 	|| (unsigned)(data->printed + len + 2) <= (unsigned)INT_MAX)
@@ -25,16 +40,14 @@ static t_data	*aux_parse_pointer(t_data *data, int width, char *str, int len)
 		}
 		else
 		{
-			if (data->zero)
-				data = ft_put_zero(width - len - 2, data);
-			else
-				data = ft_put_space(width - len - 2, data);
+			data = ft_put_space(width - len - 2, data);
 			data = ft_put_str("0x\0", 2, data);
 			data = ft_put_str(str, len, data);
 		}
 	}
 	else
 		data->error = 1;
+	free(str);
 	return (data);
 }
 
@@ -49,17 +62,21 @@ static t_data	*parse_pointer(t_data *data, int width, int precision)
 	length_str = 0;
 	while (str[length_str] != '\0')
 		length_str++;
-	if (precision < length_str && data->dot && var == 0)
-		length_str = precision;
-	else if (precision > length_str)
+	if (data->zero && !(data->dot) && !(data->dash))
+		data = zero_flag(data, width, str, length_str);
+	else
 	{
-		str = ft_join_precision(precision - length_str, str);
-		length_str = 0;
-		while (str[length_str] != '\0')
-			length_str++;
+		if (precision < length_str && data->dot && var == 0)
+			length_str = precision;
+		else if (precision > length_str)
+		{
+			str = ft_join_precision(precision - length_str, str);
+			length_str = 0;
+			while (str[length_str] != '\0')
+				length_str++;
+		}
+		data = no_zero_flag(data, width, str, length_str);
 	}
-	data = aux_parse_pointer(data, width, str, length_str);
-	free(str);
 	return (data);
 }
 

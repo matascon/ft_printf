@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:40:10 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/15 09:02:53 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/21 10:12:23 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),\
 
 char			*ft_strsjoin(char *s1, char *s2, int free_s1, int free_s2);
 char			*ft_strsdup(char *s, int free_str);
+char			*ft_str_upper(char *str);
 
 #endif

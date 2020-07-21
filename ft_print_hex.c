@@ -6,24 +6,11 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:23:34 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/16 11:23:36 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/21 10:11:51 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static char		*ft_str_upper(char *str)
-{
-	int i;
-
-	i = -1;
-	while (str[++i] != '\0')
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] = str[i] - 32;
-	}
-	return (str);
-}
 
 static t_data	*aux_parse_hex(t_data *data, char *str, int width, int len_str)
 {
@@ -37,10 +24,10 @@ static t_data	*aux_parse_hex(t_data *data, char *str, int width, int len_str)
 		}
 		else
 		{
-			if (data->dot || !(data->zero))
-				data = ft_put_space(width - len_str, data);
-			else if (data->zero)
+			if (data->zero && !(data->dot))
 				data = ft_put_zero(width - len_str, data);
+			else
+				data = ft_put_space(width - len_str, data);
 			data = ft_put_str(str, len_str, data);
 		}
 	}

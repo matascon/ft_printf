@@ -842,7 +842,7 @@ int		main()
 	printf("{%d}\n", printf("\033[1;32mTest 32 => \033[0m@main_ftprintf: |%33d|", 256));
 	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 32 => \033[0m@main_ftprintf: |%33d|", 256));
 
-	ft_printf("\n\n*********************PERCENT*****************************\n\n");
+	ft_printf("\n\n*********************PERCENT & RANDOM FLAGS*****************************\n\n");
 
 	printf(" ---> {%i}\n", printf("<%  5.%>"));
 	ft_printf(" ---> {%i}\n", ft_printf("<%  5.%>"));
@@ -852,6 +852,27 @@ int		main()
 
 	printf(" ---> {%i}\n", printf("<%2Hola como va la people?>"));
 	ft_printf(" ---> {%i}\n", ft_printf("<%2Hola como va la people?>"));
+
+	printf(" ---> {%i}\n", printf("<%05.3c", 'a'));
+	ft_printf(" ---> {%i}\n", ft_printf("<%05.3c", 'a'));
+
+	printf(" ---> {%i}\n", printf("<%5-c %20-s %15-d", 'a', "Tascon Gomez", 2001));
+	ft_printf(" ---> {%i}\n", ft_printf("<%5-c %20-s %15-d", 'a', "Tascon Gomez", 2001));
+
+	printf(" ---> {%i}\n", printf("<%5--c %20.05s %15-d", 'a', "Tascon Gomez", 2001));
+	ft_printf(" ---> {%i}\n", ft_printf("<%5--c %20.05s %15-d", 'a', "Tascon Gomez", 2001));
+
+	printf(" ---> {%i}\n", printf("<%5-*c> <%*.05-s> <%0d>", 3, 'a', 20, "Tascon Gomez", 2001));
+	ft_printf(" ---> {%i}\n", ft_printf("<%5-*c> <%*.05-s> <%0d>", 3, 'a', 20, "Tascon Gomez", 2001));
+
+	printf(" ---> {%i}\n", printf("<%5--c> <%20.05-s> <%15-d>", 'a', "Tascon Gomez", 2001));
+	ft_printf(" ---> {%i}\n", ft_printf("<%5--c> <%20.05-s> <%15-d>", 'a', "Tascon Gomez", 2001));
+
+	printf(" ---> {%i}\n", printf("<%030.p", &i));
+	ft_printf(" ---> {%i}\n", ft_printf("<%030.p", &i));
+
+	printf(" ---> {%i}\n", printf("<%030.3s", "Mateo"));
+	ft_printf(" ---> {%i}\n", ft_printf("<%030.3s", "Mateo"));
 
 	return (0);
 }

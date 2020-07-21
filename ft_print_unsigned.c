@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 12:22:32 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/16 10:26:15 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/21 09:15:29 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static t_data	*aux_parse_unsg(t_data *data, char *str, int width, int len_str)
 		}
 		else
 		{
-			if (data->dot || !(data->zero))
-				data = ft_put_space(width - len_str, data);
-			else if (data->zero)
+			if (data->zero && !(data->dot))
 				data = ft_put_zero(width - len_str, data);
+			else
+				data = ft_put_space(width - len_str, data);
 			data = ft_put_str(str, len_str, data);
 		}
 	}
