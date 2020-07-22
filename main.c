@@ -6,6 +6,7 @@ int		main()
 {
 	int 	i;
 
+	printf("\n*********************Bullshit******************\n\n");
 	printf("\n00000000000000000000000000000000000000000000000\n\n");
 	i = ft_printf("%c\n", '\0');
 	printf("%i\n", i);
@@ -61,10 +62,10 @@ int		main()
 	printf("%i\n", i);
 	i = printf("%23Q");
 	printf("%i\n", i);
-	/*printf("\n11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11\n\n");
-	i = ft_printf("%.");
-	printf("%i\n", i);
-	i = printf("%.");
+	/*printf("\n11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11\n\n"); |
+	i = ft_printf("%.");                                               |
+	printf("%i\n", i);                                                 | --------> This gives me in valgrind "1 errors from 1 context" 
+	i = printf("%.");                                                  |
 	*/printf("%i\n", i);
 	printf("\n12 12 12 12 12 12 12 12 12 12 12 12 12 12 12 12\n\n");
 	i = ft_printf("Mateo Tascon %10s xd\n", "Gomez");
@@ -94,7 +95,6 @@ int		main()
 	printf("%i\n", i);
 	i = printf("%-05c xd\n", 0);
 	printf("%i\n", i);
-	printf("\n18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18\n\n");
 	printf("{%d}\n", printf("\033[1;32mTest 2 => \033[0m|%05.c|", 'a'));
 	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 2 => \033[0m|%05.c|", 'a'));
 
@@ -816,7 +816,7 @@ int		main()
 
 
 
-	printf("\n\n\033[1;41m|----------------------------| (Lancement du test bullshit en cours...) |----------------------------|\033[0m\n");
+	printf("\n\n\033[1;41m|----------------------------| (Lancement du test more bullshit en cours...) |----------------------------|\033[0m\n");
 	
 	printf("\033[1;32m|-----| LE VRAI |-----|\033[0m\n");
 	ft_printf("\033[1;31m|-----| LE NOTRE |-----|\033[0m\n");
@@ -865,14 +865,41 @@ int		main()
 	printf(" ---> {%i}\n", printf("<%5-*c> <%*.05-s> <%0d>", 3, 'a', 20, "Tascon Gomez", 2001));
 	ft_printf(" ---> {%i}\n", ft_printf("<%5-*c> <%*.05-s> <%0d>", 3, 'a', 20, "Tascon Gomez", 2001));
 
-	printf(" ---> {%i}\n", printf("<%5--c> <%20.05-s> <%15-d>", 'a', "Tascon Gomez", 2001));
+	printf(" ---> {%i}\n", printf("<%5--c> <%20.05-s> <%15-d>", 'a', "Tascon Gomez", 2001)); // ------> Watch out!, if you are using linux, you gonna get a "segmentation fault" by this line.
 	ft_printf(" ---> {%i}\n", ft_printf("<%5--c> <%20.05-s> <%15-d>", 'a', "Tascon Gomez", 2001));
 
-	printf(" ---> {%i}\n", printf("<%030.p", &i));
-	ft_printf(" ---> {%i}\n", ft_printf("<%030.p", &i));
+	printf(" ---> {%i}\n", printf("<%030.p>", &i));
+	ft_printf(" ---> {%i}\n", ft_printf("<%030.p>", &i));
 
-	printf(" ---> {%i}\n", printf("<%030.3s", "Mateo"));
-	ft_printf(" ---> {%i}\n", ft_printf("<%030.3s", "Mateo"));
+	printf(" ---> {%i}\n", printf("<%030.3s>", "Mateo"));
+	ft_printf(" ---> {%i}\n", ft_printf("<%030.3s>", "Mateo"));
+
+	printf(" ---> {%i}\n", printf("<%0*u>", 30, 4294967295));
+	ft_printf(" ---> {%i}\n", ft_printf("<%0*u>", 30, 4294967295));
+
+	printf(" ---> {%i}\n", printf("<%0*.i>", 30, 2147483647));
+	ft_printf(" ---> {%i}\n", ft_printf("<%0*.i>", 30, 2147483647));
+
+	printf(" ---> {%i}\n", printf("<%0*.1i>", 30, -2147483648));
+	ft_printf(" ---> {%i}\n", ft_printf("<%0*.1i>", 30, -2147483648));
+
+	printf(" ---> {%i}\n", printf("<%0*.*i>", 30, 20, 2147483648));
+	ft_printf(" ---> {%i}\n", ft_printf("<%0*.*i>", 30, 20, 2147483648));
+
+	printf(" ---> {%i}\n", printf("<%0*.*-i>", 30, 20, 2147483648));
+	ft_printf(" ---> {%i}\n", ft_printf("<%0*.*-i>", 30, 20, 2147483648));
+
+	printf(" ---> {%i}\n", printf("<%*.*-i>", 30, 20, 2147483648));
+	ft_printf(" ---> {%i}\n", ft_printf("<%*.*-i>", 30, 20, 2147483648));
+
+	printf(" ---> {%i}\n", printf("<%*>", 30));
+	ft_printf(" ---> {%i}\n", ft_printf("<%*>", 30));
+
+	printf(" ---> {%i}\n", printf("<%05>"));
+	ft_printf(" ---> {%i}\n", ft_printf("<%05>"));
+
+	printf(" ---> {%i}\n", printf("<%-05>"));
+	ft_printf(" ---> {%i}\n", ft_printf("<%-05>"));
 
 	return (0);
 }

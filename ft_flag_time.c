@@ -6,11 +6,30 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:37:05 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/21 11:09:23 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/22 11:42:07 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static t_data	*print_void_argument(t_data *data)
+{
+	if (data->zero && !(data->dot) && !(data->dash))
+	{
+		if (data->width)
+			data = ft_put_zero(ft_atoi(data->width) - 1, data);
+		else if (data->star_w)
+			data = ft_put_zero(ft_star_pop(&data) - 1, data);
+	}
+	else
+	{
+		if (data->width)
+			data = ft_put_space(ft_atoi(data->width) - 1, data);
+		else if (data->star_w)
+			data = ft_put_space(ft_star_pop(&data) - 1, data);
+	}
+	return (data);
+}
 
 static char		*fill_nbr_arg(char *str, char c)
 {
@@ -61,8 +80,7 @@ int				ft_flag_time(char *str, t_data **data)
 	int	i;
 
 	i = 1;
-	while ((ft_strchr(FLAGS, str[i]) || ft_strchr(NUMBERS, str[i])) \
-	&& str[i])
+	while ((ft_strchr(FLAGS, str[i]) || ft_strchr(NUMBERS, str[i])) && str[i])
 		*data = fill_flags(*data, str, i++);
 	(*data)->alternative_reader = i;
 	if (ft_strchr(TYPES, str[i]) && str[i] != '\0')
@@ -70,7 +88,7 @@ int				ft_flag_time(char *str, t_data **data)
 		(*data)->type = str[i];
 		return (-1);
 	}
-	if ((*data)->width)
-		*data = ft_put_space(ft_atoi((*data)->width) - 1, *data);
+	if ((*data)->star_w || (*data)->width)
+		*data = print_void_argument(*data);
 	return ((*data)->alternative_reader);
 }

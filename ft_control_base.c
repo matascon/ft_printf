@@ -6,7 +6,7 @@
 /*   By: matascon <matascon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 11:37:46 by matascon          #+#    #+#             */
-/*   Updated: 2020/07/15 08:35:08 by matascon         ###   ########.fr       */
+/*   Updated: 2020/07/22 08:37:47 by matascon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ t_data			*ft_control_base(t_data *data)
 	int		i;
 
 	i = -1;
-	while (data->str[++i] != '\0' && data && \
-	data->printed < INT_MAX && !(data->error))
+	while (data->str[++i] != '\0' && data->printed < INT_MAX && !(data->error))
 	{
 		data = stc_zero_flags(data);
 		if (data->str[i] == '%')
